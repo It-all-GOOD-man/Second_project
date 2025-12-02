@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Использование &mdash; Snake Game  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Модули" href="modules.html" />
+    <link rel="prev" title="Установка и настройка" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Snake Game
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Установка и настройка</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Использование</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Аргументы командной строки ️</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Основные настройки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Настройки внешнего вида</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Доступные цвета</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Примеры использования</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Начальный уровень</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Средний уровень</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Продвинутый уровень</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Полная кастомизация</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Управление в игре</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Движение змейки</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">Системные клавиши</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">Управление в меню</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">Навигация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Дополнительные функции</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">Игровой процесс</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">Пошаговое руководство</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">Советы и рекомендации</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Для новичков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">Для опытных игроков</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id24">Для соревнований</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id25">Устранение проблем</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id26">Частые вопросы</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Нужна помощь?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Модули</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Snake Game</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Использование</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Использование<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<section id="id2">
+<h2>Обзор<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>Игра “Змейка” предоставляет различные настройки и режимы игры, которые можно настроить через аргументы командной строки.</p>
+</section>
+<section id="id4">
+<h2>Аргументы командной строки ️<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="id5">
+<h3>Основные настройки<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Аргумент</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>По умолчанию</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--speed</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Скорость движения змейки (1-20)</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--wall-pass</span></code></p></td>
+<td><p>flag</p></td>
+<td><p>Режим прохождения сквозь стены</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--player-name</span></code></p></td>
+<td><p>str</p></td>
+<td><p>Имя игрока для таблицы рекордов</p></td>
+<td><p>“Player”</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Настройки внешнего вида<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Аргумент</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Описание</p></th>
+<th class="head"><p>По умолчанию</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--snake-color</span></code></p></td>
+<td><p>str</p></td>
+<td><p>Цвет змейки</p></td>
+<td><p>green</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--food-color</span></code></p></td>
+<td><p>str</p></td>
+<td><p>Цвет еды</p></td>
+<td><p>red</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--grid-size</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Размер клетки сетки (пиксели)</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--width</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Ширина игрового окна</p></td>
+<td><p>800</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--height</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Высота игрового окна</p></td>
+<td><p>600</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id7">
+<h3>Доступные цвета<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Для змейки:</strong></dt><dd><ul class="simple">
+<li><p>🟢 <code class="docutils literal notranslate"><span class="pre">green</span></code> - Зеленый</p></li>
+<li><p>🔵 <code class="docutils literal notranslate"><span class="pre">blue</span></code> - Синий</p></li>
+<li><p>🔴 <code class="docutils literal notranslate"><span class="pre">red</span></code> - Красный</p></li>
+<li><p>🟡 <code class="docutils literal notranslate"><span class="pre">yellow</span></code> - Желтый</p></li>
+<li><p>🟣 <code class="docutils literal notranslate"><span class="pre">purple</span></code> - Фиолетовый</p></li>
+</ul>
+</dd>
+<dt><strong>Для еды:</strong></dt><dd><ul class="simple">
+<li><p>🔴 <code class="docutils literal notranslate"><span class="pre">red</span></code> - Красный</p></li>
+<li><p>🟢 <code class="docutils literal notranslate"><span class="pre">green</span></code> - Зеленый</p></li>
+<li><p>🔵 <code class="docutils literal notranslate"><span class="pre">blue</span></code> - Синий</p></li>
+<li><p>🟡 <code class="docutils literal notranslate"><span class="pre">yellow</span></code> - Желтый</p></li>
+<li><p>🟣 <code class="docutils literal notranslate"><span class="pre">purple</span></code> - Фиолетовый</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="id8">
+<h2>Примеры использования<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3>Начальный уровень<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Запуск с настройками по умолчанию</span><a class="headerlink" href="#id28" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>Средний уровень<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Увеличенная скорость для большего challenge</span><a class="headerlink" href="#id29" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>--speed<span class="w"> </span><span class="m">15</span><span class="w"> </span>--player-name<span class="w"> </span><span class="s2">&quot;Профи&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>Продвинутый уровень<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">Кастомные настройки с режимом wall-pass</span><a class="headerlink" href="#id30" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>--snake-color<span class="w"> </span>blue<span class="w"> </span>--food-color<span class="w"> </span>yellow<span class="w"> </span>--wall-pass
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h3>Полная кастомизация<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">Все параметры настроены под пользователя</span><a class="headerlink" href="#id31" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--speed<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--snake-color<span class="w"> </span>purple<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--food-color<span class="w"> </span>green<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--grid-size<span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--width<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--height<span class="w"> </span><span class="m">768</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--player-name<span class="w"> </span><span class="s2">&quot;Геймер&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--wall-pass
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2>Управление в игре<a class="headerlink" href="#id13" title="Link to this heading"></a></h2>
+<section id="id14">
+<h3>Движение змейки<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Клавиша</p></th>
+<th class="head"><p>Действие</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>⬆️ <strong>Стрелка вверх</strong></p></td>
+<td><p>Движение вверх</p></td>
+</tr>
+<tr class="row-odd"><td><p>⬇️ <strong>Стрелка вниз</strong></p></td>
+<td><p>Движение вниз</p></td>
+</tr>
+<tr class="row-even"><td><p>⬅️ <strong>Стрелка влево</strong></p></td>
+<td><p>Движение влево</p></td>
+</tr>
+<tr class="row-odd"><td><p>➡️ <strong>Стрелка вправо</strong></p></td>
+<td><p>Движение вправо</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3>Системные клавиши<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Клавиша</p></th>
+<th class="head"><p>Действие</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>⎋ <strong>ESC</strong></p></td>
+<td><p>Экстренный выход из игры</p></td>
+</tr>
+<tr class="row-odd"><td><p>↵ <strong>ENTER</strong></p></td>
+<td><p>Продолжить после Game Over</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id16">
+<h2>Управление в меню<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<section id="id17">
+<h3>Навигация<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Клавиша</p></th>
+<th class="head"><p>Действие</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>⬆️ <strong>Стрелка вверх</strong></p></td>
+<td><p>Перемещение вверх по меню</p></td>
+</tr>
+<tr class="row-odd"><td><p>⬇️ <strong>Стрелка вниз</strong></p></td>
+<td><p>Перемещение вниз по меню</p></td>
+</tr>
+<tr class="row-even"><td><p>↵ <strong>ENTER</strong></p></td>
+<td><p>Выбор текущей опции</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3>Дополнительные функции<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Клавиша</p></th>
+<th class="head"><p>Действие</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>N</strong></p></td>
+<td><p>Редактирование имени игрока</p></td>
+</tr>
+<tr class="row-odd"><td><p>⎋ <strong>ESC</strong></p></td>
+<td><p>Возврат из таблицы рекордов</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id19">
+<h2>Игровой процесс<a class="headerlink" href="#id19" title="Link to this heading"></a></h2>
+<section id="id20">
+<h3>Пошаговое руководство<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Запуск игры</strong>
+- Откройте терминал/командную строку
+- Перейдите в папку с игрой
+- Выполните команду запуска</p></li>
+<li><p><strong>Главное меню</strong>
+- Используйте стрелки для навигации
+- Нажмите <strong>N</strong> для смены имени
+- Выберите “Start Game” для начала</p></li>
+<li><p><strong>Игровой процесс</strong>
+- Собирайте еду для увеличения счета
+- Избегайте столкновений со стенами и собой
+- Следите за временем и длиной змейки</p></li>
+<li><p><strong>Завершение игры</strong>
+- Просмотрите свои результаты
+- Нажмите ENTER для возврата в меню
+- Проверьте свои рекорды в “High Scores”</p></li>
+</ol>
+</section>
+</section>
+<section id="id21">
+<h2>Советы и рекомендации<a class="headerlink" href="#id21" title="Link to this heading"></a></h2>
+<section id="id22">
+<h3>Для новичков<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Начните со скорости 8-10</p></li>
+<li><p>Используйте обычный режим (без wall-pass)</p></li>
+<li><p>Практикуйте управление в углах поля</p></li>
+</ul>
+</section>
+<section id="id23">
+<h3>Для опытных игроков<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Попробуйте скорость 15+</p></li>
+<li><p>Используйте режим wall-pass для сложных маневров</p></li>
+<li><p>Экспериментируйте с цветами для лучшей видимости</p></li>
+</ul>
+</section>
+<section id="id24">
+<h3>Для соревнований<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Установите уникальное имя для таблицы рекордов</p></li>
+<li><p>Используйте высокое разрешение для точности</p></li>
+<li><p>Записывайте свои лучшие результаты</p></li>
+</ul>
+</section>
+</section>
+<section id="id25">
+<h2>Устранение проблем<a class="headerlink" href="#id25" title="Link to this heading"></a></h2>
+<section id="id26">
+<h3>Частые вопросы<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Игра не запускается:</strong></dt><dd><ul class="simple">
+<li><p>Проверьте установку Python и зависимостей</p></li>
+<li><p>Убедитесь, что находитесь в правильной папке</p></li>
+</ul>
+</dd>
+<dt><strong>Нет подключения к БД:</strong></dt><dd><ul class="simple">
+<li><p>Проверьте работу PostgreSQL</p></li>
+<li><p>Убедитесь в правильности настроек в <code class="docutils literal notranslate"><span class="pre">db_handler.py</span></code></p></li>
+</ul>
+</dd>
+<dt><strong>Проблемы с управлением:</strong></dt><dd><ul class="simple">
+<li><p>Убедитесь, что окно игры активно</p></li>
+<li><p>Проверьте раскладку клавиатуры</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h3>Нужна помощь?<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<p>Если у вас возникли проблемы:</p>
+<ol class="arabic simple">
+<li><p>Проверьте раздел <a class="reference internal" href="installation.html"><span class="doc">Установка и настройка</span></a></p></li>
+<li><p>Убедитесь, что все зависимости установлены</p></li>
+<li><p>Попробуйте запуск с минимальными настройками</p></li>
+</ol>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">Тестовый запуск</span><a class="headerlink" href="#id32" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>main.py<span class="w"> </span>--speed<span class="w"> </span><span class="m">5</span><span class="w"> </span>--player-name<span class="w"> </span>Test
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Установка и настройка" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="Модули" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BURNOBED4.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

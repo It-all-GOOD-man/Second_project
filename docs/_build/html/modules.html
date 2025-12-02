@@ -1,0 +1,905 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модули &mdash; Snake Game  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Использование" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Snake Game
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Установка и настройка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Использование</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Модули</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Основные модули</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-main">main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Конфигурация</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-config.settings">config.settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.settings.GameSettings"><code class="docutils literal notranslate"><span class="pre">GameSettings</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">База данных</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-database.db_handler">database.db_handler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#database.db_handler.DatabaseHandler"><code class="docutils literal notranslate"><span class="pre">DatabaseHandler</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Игровые модули</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-game.snake">game.snake</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game.snake.Snake"><code class="docutils literal notranslate"><span class="pre">Snake</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-game.food">game.food</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game.food.Food"><code class="docutils literal notranslate"><span class="pre">Food</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-game.game_logic">game.game_logic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game.game_logic.GameLogic"><code class="docutils literal notranslate"><span class="pre">GameLogic</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-game.menu">game.menu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#game.menu.Menu"><code class="docutils literal notranslate"><span class="pre">Menu</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Snake Game</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Модули</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Модули<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<p>В этом разделе описаны все модули проекта.</p>
+<section id="id2">
+<h2>Основные модули<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="module-main">
+<span id="main"></span><h3>main<a class="headerlink" href="#module-main" title="Link to this heading"></a></h3>
+<p>Главный модуль игры Змейка.</p>
+<p>Запускает игру, инициализирует настройки, базу данных и управляет основным игровым циклом.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.main">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.main" title="Link to this definition"></a></dt>
+<dd><p>Главная функция, запускающая игру.</p>
+<p>Инициализирует Pygame, загружает настройки, создает подключение к БД
+и управляет основным игровым циклом (меню → игра → завершение).</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="id3">
+<h2>Конфигурация<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<section id="module-config.settings">
+<span id="config-settings"></span><h3>config.settings<a class="headerlink" href="#module-config.settings" title="Link to this heading"></a></h3>
+<p>Модуль управления настройками игры.</p>
+<p>Обрабатывает аргументы командной строки и предоставляет настройки для игры.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.settings.GameSettings">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.settings.</span></span><span class="sig-name descname"><span class="pre">GameSettings</span></span><a class="reference internal" href="_modules/config/settings.html#GameSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.settings.GameSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для управления игровыми настройками.</p>
+<p>Обрабатывает аргументы командной строки и предоставляет доступ к настройкам игры.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="config.settings.GameSettings.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/config/settings.html#GameSettings.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.settings.GameSettings.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует парсер аргументов и загружает настройки.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="config.settings.GameSettings.get_settings">
+<span class="sig-name descname"><span class="pre">get_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/config/settings.html#GameSettings.get_settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#config.settings.GameSettings.get_settings" title="Link to this definition"></a></dt>
+<dd><p>Возвращает словарь с текущими настройками игры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Словарь с настройками:</dt><dd><ul class="simple">
+<li><p>speed (int): Скорость змейки</p></li>
+<li><p>wall_pass (bool): Прохождение сквозь стены</p></li>
+<li><p>snake_color (str): Цвет змейки</p></li>
+<li><p>food_color (str): Цвет еды</p></li>
+<li><p>grid_size (int): Размер клетки сетки</p></li>
+<li><p>width (int): Ширина окна</p></li>
+<li><p>height (int): Высота окна</p></li>
+<li><p>player_name (str): Имя игрока</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="id4">
+<h2>База данных<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<section id="module-database.db_handler">
+<span id="database-db-handler"></span><h3>database.db_handler<a class="headerlink" href="#module-database.db_handler" title="Link to this heading"></a></h3>
+<p>Модуль для работы с базой данных PostgreSQL.</p>
+<p>Обеспечивает подключение к БД, создание таблиц, сохранение игровых сессий
+и получение рекордов.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.db_handler.</span></span><span class="sig-name descname"><span class="pre">DatabaseHandler</span></span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для управления подключением и операциями с базой данных.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.connection">
+<span class="sig-name descname"><span class="pre">connection</span></span><a class="headerlink" href="#database.db_handler.DatabaseHandler.connection" title="Link to this definition"></a></dt>
+<dd><p>Подключение к PostgreSQL</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.db_config">
+<span class="sig-name descname"><span class="pre">db_config</span></span><a class="headerlink" href="#database.db_handler.DatabaseHandler.db_config" title="Link to this definition"></a></dt>
+<dd><p>Конфигурация подключения к БД</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует подключение к БД и создает таблицы.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.close" title="Link to this definition"></a></dt>
+<dd><p>Закрывает подключение к БД.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.connect" title="Link to this definition"></a></dt>
+<dd><p>Устанавливает подключение к PostgreSQL.</p>
+<dl class="simple">
+<dt>Prints:</dt><dd><p>Сообщение об успешном подключении или ошибке.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.create_tables">
+<span class="sig-name descname"><span class="pre">create_tables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.create_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.create_tables" title="Link to this definition"></a></dt>
+<dd><p>Создает необходимые таблицы в БД если они не существуют.</p>
+<dl class="simple">
+<dt>Создает таблицы:</dt><dd><ul class="simple">
+<li><p>game_sessions: для хранения игровых сессий</p></li>
+<li><p>game_stats: для хранения статистики игр</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.get_high_scores">
+<span class="sig-name descname"><span class="pre">get_high_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.get_high_scores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.get_high_scores" title="Link to this definition"></a></dt>
+<dd><p>Получает таблицу рекордов из БД.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>limit</strong> (<em>int</em>) – Количество возвращаемых записей (по умолчанию 10)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Список кортежей с данными рекордов:</dt><dd><p>(player_name, score, game_duration, end_time)</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.db_handler.DatabaseHandler.save_game_session">
+<span class="sig-name descname"><span class="pre">save_game_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">game_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">food_eaten</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">walls_passed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/database/db_handler.html#DatabaseHandler.save_game_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.db_handler.DatabaseHandler.save_game_session" title="Link to this definition"></a></dt>
+<dd><p>Сохраняет игровую сессию и статистику в БД.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>player_name</strong> (<em>str</em>) – Имя игрока</p></li>
+<li><p><strong>score</strong> (<em>int</em>) – Финальный счет</p></li>
+<li><p><strong>game_duration</strong> (<em>int</em>) – Длительность игры в секундах</p></li>
+<li><p><strong>settings</strong> (<em>dict</em>) – Настройки игры</p></li>
+<li><p><strong>food_eaten</strong> (<em>int</em>) – Количество съеденной еды</p></li>
+<li><p><strong>max_length</strong> (<em>int</em>) – Максимальная длина змейки</p></li>
+<li><p><strong>walls_passed</strong> (<em>bool</em>) – Флаг прохождения сквозь стены</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ID сохраненной сессии или None при ошибке</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="id5">
+<h2>Игровые модули<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<section id="module-game.snake">
+<span id="game-snake"></span><h3>game.snake<a class="headerlink" href="#module-game.snake" title="Link to this heading"></a></h3>
+<p>Модуль класса Змейки.</p>
+<p>Содержит логику движения, отрисовки и управления змейкой.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="game.snake.Snake">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">game.snake.</span></span><span class="sig-name descname"><span class="pre">Snake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'green'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс, представляющий змейку в игре.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.grid_size">
+<span class="sig-name descname"><span class="pre">grid_size</span></span><a class="headerlink" href="#game.snake.Snake.grid_size" title="Link to this definition"></a></dt>
+<dd><p>Размер клетки сетки</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#game.snake.Snake.color" title="Link to this definition"></a></dt>
+<dd><p>Цвет змейки в формате RGB</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.positions">
+<span class="sig-name descname"><span class="pre">positions</span></span><a class="headerlink" href="#game.snake.Snake.positions" title="Link to this definition"></a></dt>
+<dd><p>Список позиций сегментов змейки</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.direction">
+<span class="sig-name descname"><span class="pre">direction</span></span><a class="headerlink" href="#game.snake.Snake.direction" title="Link to this definition"></a></dt>
+<dd><p>Текущее направление движения</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.score">
+<span class="sig-name descname"><span class="pre">score</span></span><a class="headerlink" href="#game.snake.Snake.score" title="Link to this definition"></a></dt>
+<dd><p>Текущий счет</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.snake.Snake.grow_to">
+<span class="sig-name descname"><span class="pre">grow_to</span></span><a class="headerlink" href="#game.snake.Snake.grow_to" title="Link to this definition"></a></dt>
+<dd><p>Целевая длина для роста</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'green'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует змейку.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_size</strong> (<em>int</em>) – Размер клетки сетки</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – Название цвета змейки</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.draw" title="Link to this definition"></a></dt>
+<dd><p>Отрисовывает змейку на поверхности.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>surface</strong> – Поверхность Pygame для отрисовки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.get_head_position">
+<span class="sig-name descname"><span class="pre">get_head_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.get_head_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.get_head_position" title="Link to this definition"></a></dt>
+<dd><p>Возвращает позицию головы змейки.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Координаты (x, y) головы змейки</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.get_length">
+<span class="sig-name descname"><span class="pre">get_length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.get_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.get_length" title="Link to this definition"></a></dt>
+<dd><p>Возвращает текущую длину змейки.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Количество сегментов змейки</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.grow">
+<span class="sig-name descname"><span class="pre">grow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.grow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.grow" title="Link to this definition"></a></dt>
+<dd><p>Увеличивает длину змейки и добавляет очки.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wall_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.move" title="Link to this definition"></a></dt>
+<dd><p>Перемещает змейку в текущем направлении.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wall_pass</strong> (<em>bool</em>) – Разрешить прохождение сквозь стены</p></li>
+<li><p><strong>screen_width</strong> (<em>int</em>) – Ширина экрана</p></li>
+<li><p><strong>screen_height</strong> (<em>int</em>) – Высота экрана</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>False если произошло столкновение с собой, иначе True</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.reset" title="Link to this definition"></a></dt>
+<dd><p>Сбрасывает змейку в начальное состояние.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.snake.Snake.turn">
+<span class="sig-name descname"><span class="pre">turn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/snake.html#Snake.turn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.snake.Snake.turn" title="Link to this definition"></a></dt>
+<dd><p>Изменяет направление движения змейки.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>point</strong> (<em>tuple</em>) – Новое направление (dx, dy)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-game.food">
+<span id="game-food"></span><h3>game.food<a class="headerlink" href="#module-game.food" title="Link to this heading"></a></h3>
+<p>Модуль класса Еды.</p>
+<p>Содержит логику генерации и отрисовки еды для змейки.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="game.food.Food">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">game.food.</span></span><span class="sig-name descname"><span class="pre">Food</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/food.html#Food"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.food.Food" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс, представляющий еду в игре.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.food.Food.grid_size">
+<span class="sig-name descname"><span class="pre">grid_size</span></span><a class="headerlink" href="#game.food.Food.grid_size" title="Link to this definition"></a></dt>
+<dd><p>Размер клетки сетки</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.food.Food.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#game.food.Food.color" title="Link to this definition"></a></dt>
+<dd><p>Цвет еды в формате RGB</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.food.Food.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#game.food.Food.position" title="Link to this definition"></a></dt>
+<dd><p>Текущая позиция еды</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.food.Food.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/food.html#Food.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.food.Food.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует еду.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid_size</strong> (<em>int</em>) – Размер клетки сетки</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – Название цвета еды</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.food.Food.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/food.html#Food.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.food.Food.draw" title="Link to this definition"></a></dt>
+<dd><p>Отрисовывает еду на поверхности.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>surface</strong> – Поверхность Pygame для отрисовки</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.food.Food.randomize_position">
+<span class="sig-name descname"><span class="pre">randomize_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">snake_positions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screen_height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">600</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/food.html#Food.randomize_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.food.Food.randomize_position" title="Link to this definition"></a></dt>
+<dd><p>Случайным образом размещает еду на поле.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>snake_positions</strong> (<em>list</em>) – Список позиций змейки для избежания пересечения</p></li>
+<li><p><strong>screen_width</strong> (<em>int</em>) – Ширина экрана</p></li>
+<li><p><strong>screen_height</strong> (<em>int</em>) – Высота экрана</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-game.game_logic">
+<span id="game-game-logic"></span><h3>game.game_logic<a class="headerlink" href="#module-game.game_logic" title="Link to this heading"></a></h3>
+<p>Модуль основной игровой логики.</p>
+<p>Содержит главный игровой цикл, обработку событий и отрисовку игры.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">game.game_logic.</span></span><span class="sig-name descname"><span class="pre">GameLogic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_handler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс основной игровой логики.</p>
+<p>Управляет игровым процессом, обработкой событий, обновлением состояния
+и отрисовкой игры.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><a class="headerlink" href="#game.game_logic.GameLogic.settings" title="Link to this definition"></a></dt>
+<dd><p>Настройки игры</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.db_handler">
+<span class="sig-name descname"><span class="pre">db_handler</span></span><a class="headerlink" href="#game.game_logic.GameLogic.db_handler" title="Link to this definition"></a></dt>
+<dd><p>Обработчик базы данных</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.screen_width">
+<span class="sig-name descname"><span class="pre">screen_width</span></span><a class="headerlink" href="#game.game_logic.GameLogic.screen_width" title="Link to this definition"></a></dt>
+<dd><p>Ширина экрана</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.screen_height">
+<span class="sig-name descname"><span class="pre">screen_height</span></span><a class="headerlink" href="#game.game_logic.GameLogic.screen_height" title="Link to this definition"></a></dt>
+<dd><p>Высота экрана</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.grid_size">
+<span class="sig-name descname"><span class="pre">grid_size</span></span><a class="headerlink" href="#game.game_logic.GameLogic.grid_size" title="Link to this definition"></a></dt>
+<dd><p>Размер клетки сетки</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.snake">
+<span class="sig-name descname"><span class="pre">snake</span></span><a class="headerlink" href="#game.game_logic.GameLogic.snake" title="Link to this definition"></a></dt>
+<dd><p>Объект змейки</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#game.snake.Snake" title="game.snake.Snake">Snake</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.food">
+<span class="sig-name descname"><span class="pre">food</span></span><a class="headerlink" href="#game.game_logic.GameLogic.food" title="Link to this definition"></a></dt>
+<dd><p>Объект еды</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#game.food.Food" title="game.food.Food">Food</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_handler</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует игровую логику.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>settings</strong> (<em>dict</em>) – Словарь с настройками игры</p></li>
+<li><p><strong>db_handler</strong> – Объект для работы с базой данных</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.draw" title="Link to this definition"></a></dt>
+<dd><p>Отрисовывает игровое поле, змейку, еду и интерфейс.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.handle_events">
+<span class="sig-name descname"><span class="pre">handle_events</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.handle_events"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.handle_events" title="Link to this definition"></a></dt>
+<dd><p>Обрабатывает события Pygame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False если игра должна завершиться, иначе True</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.run" title="Link to this definition"></a></dt>
+<dd><p>Запускает главный игровой цикл.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>player_name</strong> (<em>str</em>) – Имя игрока</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True если игра должна продолжиться с новым раундом, False для выхода в меню</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.show_game_over">
+<span class="sig-name descname"><span class="pre">show_game_over</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.show_game_over"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.show_game_over" title="Link to this definition"></a></dt>
+<dd><p>Показывает экран завершения игры и сохраняет результаты.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>player_name</strong> (<em>str</em>) – Имя игрока</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True если игра должна продолжиться, False для выхода</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.game_logic.GameLogic.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/game_logic.html#GameLogic.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.game_logic.GameLogic.update" title="Link to this definition"></a></dt>
+<dd><p>Обновляет игровое состояние.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False если игра окончена, иначе True</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-game.menu">
+<span id="game-menu"></span><h3>game.menu<a class="headerlink" href="#module-game.menu" title="Link to this heading"></a></h3>
+<p>Модуль игрового меню.</p>
+<p>Содержит логику отображения и управления главным меню и таблицей рекордов.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="game.menu.Menu">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">game.menu.</span></span><span class="sig-name descname"><span class="pre">Menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_player_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Player'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для управления игровым меню.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.screen">
+<span class="sig-name descname"><span class="pre">screen</span></span><a class="headerlink" href="#game.menu.Menu.screen" title="Link to this definition"></a></dt>
+<dd><p>Поверхность Pygame для отрисовки</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.db_handler">
+<span class="sig-name descname"><span class="pre">db_handler</span></span><a class="headerlink" href="#game.menu.Menu.db_handler" title="Link to this definition"></a></dt>
+<dd><p>Обработчик базы данных</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.font_large">
+<span class="sig-name descname"><span class="pre">font_large</span></span><a class="headerlink" href="#game.menu.Menu.font_large" title="Link to this definition"></a></dt>
+<dd><p>Шрифт для крупного текста</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.font_medium">
+<span class="sig-name descname"><span class="pre">font_medium</span></span><a class="headerlink" href="#game.menu.Menu.font_medium" title="Link to this definition"></a></dt>
+<dd><p>Шрифт для среднего текста</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.font_small">
+<span class="sig-name descname"><span class="pre">font_small</span></span><a class="headerlink" href="#game.menu.Menu.font_small" title="Link to this definition"></a></dt>
+<dd><p>Шрифт для мелкого текста</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.selected_option">
+<span class="sig-name descname"><span class="pre">selected_option</span></span><a class="headerlink" href="#game.menu.Menu.selected_option" title="Link to this definition"></a></dt>
+<dd><p>Индекс выбранной опции меню</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#game.menu.Menu.options" title="Link to this definition"></a></dt>
+<dd><p>Список доступных опций меню</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.player_name">
+<span class="sig-name descname"><span class="pre">player_name</span></span><a class="headerlink" href="#game.menu.Menu.player_name" title="Link to this definition"></a></dt>
+<dd><p>Текущее имя игрока</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="game.menu.Menu.name_input_active">
+<span class="sig-name descname"><span class="pre">name_input_active</span></span><a class="headerlink" href="#game.menu.Menu.name_input_active" title="Link to this definition"></a></dt>
+<dd><p>Флаг активности ввода имени</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.menu.Menu.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_player_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Player'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu.__init__" title="Link to this definition"></a></dt>
+<dd><p>Инициализирует меню.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>screen</strong> – Поверхность Pygame для отрисовки</p></li>
+<li><p><strong>db_handler</strong> – Обработчик базы данных</p></li>
+<li><p><strong>default_player_name</strong> (<em>str</em>) – Имя игрока по умолчанию</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.menu.Menu.draw_high_scores">
+<span class="sig-name descname"><span class="pre">draw_high_scores</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu.draw_high_scores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu.draw_high_scores" title="Link to this definition"></a></dt>
+<dd><p>Отрисовывает экран с таблицей рекордов.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.menu.Menu.draw_main_menu">
+<span class="sig-name descname"><span class="pre">draw_main_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu.draw_main_menu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu.draw_main_menu" title="Link to this definition"></a></dt>
+<dd><p>Отрисовывает главное меню.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.menu.Menu.handle_name_input">
+<span class="sig-name descname"><span class="pre">handle_name_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu.handle_name_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu.handle_name_input" title="Link to this definition"></a></dt>
+<dd><p>Обрабатывает ввод имени игрока.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> – Событие клавиатуры Pygame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="game.menu.Menu.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/game/menu.html#Menu.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#game.menu.Menu.run" title="Link to this definition"></a></dt>
+<dd><p>Запускает главный цикл меню.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>(player_name, game_started) где:</dt><dd><p>player_name (str): Имя игрока
+game_started (bool): Флаг начала игры</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Использование" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BURNOBED4.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

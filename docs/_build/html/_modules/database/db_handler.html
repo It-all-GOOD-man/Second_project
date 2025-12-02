@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>database.db_handler &mdash; Snake Game  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Snake Game
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Содержание:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Установка и настройка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Использование</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Модули</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Snake Game</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">database.db_handler</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for database.db_handler</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Модуль для работы с базой данных PostgreSQL.</span>
+
+<span class="sd">Обеспечивает подключение к БД, создание таблиц, сохранение игровых сессий</span>
+<span class="sd">и получение рекордов.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<div class="viewcode-block" id="DatabaseHandler">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DatabaseHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Класс для управления подключением и операциями с базой данных.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        connection: Подключение к PostgreSQL</span>
+<span class="sd">        db_config (dict): Конфигурация подключения к БД</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DatabaseHandler.__init__">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Инициализирует подключение к БД и создает таблицы.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="s1">&#39;5432&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;dbname&#39;</span><span class="p">:</span> <span class="s1">&#39;snake_game&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;1111&#39;</span>  <span class="c1"># ваш пароль</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_tables</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseHandler.connect">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.connect">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Устанавливает подключение к PostgreSQL.</span>
+
+<span class="sd">        Prints:</span>
+<span class="sd">            Сообщение об успешном подключении или ошибке.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">db_config</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Автоподключение к PostgreSQL успешно!&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Ошибка подключения к PostgreSQL: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="DatabaseHandler.create_tables">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.create_tables">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Создает необходимые таблицы в БД если они не существуют.</span>
+
+<span class="sd">        Создает таблицы:</span>
+<span class="sd">            - game_sessions: для хранения игровых сессий</span>
+<span class="sd">            - game_stats: для хранения статистики игр</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+            <span class="c1"># Таблица для хранения игровых сессий</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS game_sessions (</span>
+<span class="s1">                    id SERIAL PRIMARY KEY,</span>
+<span class="s1">                    player_name VARCHAR(100) NOT NULL,</span>
+<span class="s1">                    start_time TIMESTAMP NOT NULL,</span>
+<span class="s1">                    end_time TIMESTAMP,</span>
+<span class="s1">                    score INTEGER DEFAULT 0,</span>
+<span class="s1">                    game_duration INTEGER,</span>
+<span class="s1">                    settings JSONB</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            <span class="c1"># Таблица для хранения статистики по играм</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS game_stats (</span>
+<span class="s1">                    id SERIAL PRIMARY KEY,</span>
+<span class="s1">                    session_id INTEGER REFERENCES game_sessions(id),</span>
+<span class="s1">                    food_eaten INTEGER DEFAULT 0,</span>
+<span class="s1">                    max_length INTEGER DEFAULT 0,</span>
+<span class="s1">                    walls_passed BOOLEAN DEFAULT FALSE,</span>
+<span class="s1">                    final_score INTEGER DEFAULT 0</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Таблицы PostgreSQL созданы/проверены&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Ошибка создания таблиц: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DatabaseHandler.save_game_session">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.save_game_session">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_game_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_name</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">game_duration</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">food_eaten</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span> <span class="n">walls_passed</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Сохраняет игровую сессию и статистику в БД.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            player_name (str): Имя игрока</span>
+<span class="sd">            score (int): Финальный счет</span>
+<span class="sd">            game_duration (int): Длительность игры в секундах</span>
+<span class="sd">            settings (dict): Настройки игры</span>
+<span class="sd">            food_eaten (int): Количество съеденной еды</span>
+<span class="sd">            max_length (int): Максимальная длина змейки</span>
+<span class="sd">            walls_passed (bool): Флаг прохождения сквозь стены</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int or None: ID сохраненной сессии или None при ошибке</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ Нет подключения к БД&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+            <span class="c1"># Сохраняем игровую сессию</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT INTO game_sessions (player_name, start_time, end_time, score, game_duration, settings)</span>
+<span class="s1">                VALUES (</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">)</span>
+<span class="s1">                RETURNING id</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">player_name</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">score</span><span class="p">,</span> <span class="n">game_duration</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">settings</span><span class="p">)))</span>
+
+            <span class="n">session_id</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Сохраняем статистику</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT INTO game_stats (session_id, food_eaten, max_length, walls_passed, final_score)</span>
+<span class="s1">                VALUES (</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">session_id</span><span class="p">,</span> <span class="n">food_eaten</span><span class="p">,</span> <span class="n">max_length</span><span class="p">,</span> <span class="n">walls_passed</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Игра сохранена в PostgreSQL. Игрок: </span><span class="si">{</span><span class="n">player_name</span><span class="si">}</span><span class="s2">, Счет: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">session_id</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Ошибка сохранения игры: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="DatabaseHandler.get_high_scores">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.get_high_scores">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_high_scores</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Получает таблицу рекордов из БД.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            limit (int): Количество возвращаемых записей (по умолчанию 10)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: Список кортежей с данными рекордов:</span>
+<span class="sd">                (player_name, score, game_duration, end_time)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                SELECT player_name, score, game_duration, end_time</span>
+<span class="s1">                FROM game_sessions</span>
+<span class="s1">                ORDER BY score DESC</span>
+<span class="s1">                LIMIT </span><span class="si">%s</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">limit</span><span class="p">,))</span>
+
+            <span class="n">results</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">results</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Ошибка получения рекордов: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="DatabaseHandler.close">
+<a class="viewcode-back" href="../../modules.html#database.db_handler.DatabaseHandler.close">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Закрывает подключение к БД.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Подключение к PostgreSQL закрыто&quot;</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, BURNOBED4.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
