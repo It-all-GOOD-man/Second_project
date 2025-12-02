@@ -109,12 +109,9 @@ class GameLogic:
         return True
 
     def draw(self):
-        """
-        Отрисовывает игровое поле, змейку, еду и интерфейс.
-        """
         self.screen.fill((0, 0, 0))
 
-        # Рисуем сетку (опционально)
+        # Рисуем сетку
         for x in range(0, self.screen_width, self.grid_size):
             pygame.draw.line(self.screen, (40, 40, 40), (x, 0), (x, self.screen_height))
         for y in range(0, self.screen_height, self.grid_size):
@@ -124,18 +121,33 @@ class GameLogic:
         self.snake.draw(self.screen)
         self.food.draw(self.screen)
 
-        # Отображаем счет
-        score_text = self.font.render(f'Score: {self.snake.score}', True, (255, 255, 255))
-        self.screen.blit(score_text, (10, 10))
+        # Динамический размер шрифта в зависимости от разрешения
+        base_font_size = max(24, int(min(self.screen_width, self.screen_height) * 0.02))
+        font = pygame.font.Font(None, base_font_size)
+
+
+        score_text = font.render(f'Score: {self.snake.score}', True, (255, 255, 255))
+
+        # Отступ рассчитываем как процент от ширины экрана
+        padding_x = max(20, int(self.screen_width * 0.02))  # Минимум 20px или 2% ширины
+        padding_y = max(10, int(self.screen_height * 0.02))  # Минимум 10px или 2% высоты
+
+        # Позиции текста с отступами
+        self.screen.blit(score_text, (padding_x, padding_y))
 
         # Отображаем длину змейки
-        length_text = self.font.render(f'Length: {self.snake.get_length()}', True, (255, 255, 255))
-        self.screen.blit(length_text, (10, 50))
+        length_text = font.render(f'Length: {self.snake.get_length()}', True, (255, 255, 255))
+        self.screen.blit(length_text, (padding_x, padding_y + base_font_size + 5))
 
         # Отображаем время игры
         game_time = int(time.time() - self.start_time)
-        time_text = self.font.render(f'Time: {game_time}s', True, (255, 255, 255))
-        self.screen.blit(time_text, (10, 90))
+        time_text = font.render(f'Time: {game_time}s', True, (255, 255, 255))
+        self.screen.blit(time_text, (padding_x, padding_y + (base_font_size + 5) * 2))
+
+
+        if self.settings['wall_pass']:
+            wall_text = font.render('Wall Pass: ON', True, (255, 100, 100))
+            self.screen.blit(wall_text, (padding_x, padding_y + (base_font_size + 5) * 4))
 
         pygame.display.flip()
 
