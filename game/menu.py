@@ -1,9 +1,38 @@
+"""
+Модуль игрового меню.
+
+Содержит логику отображения и управления главным меню и таблицей рекордов.
+"""
+
 import pygame
 import sys
 
 
 class Menu:
+    """
+    Класс для управления игровым меню.
+
+    Attributes:
+        screen: Поверхность Pygame для отрисовки
+        db_handler: Обработчик базы данных
+        font_large: Шрифт для крупного текста
+        font_medium: Шрифт для среднего текста
+        font_small: Шрифт для мелкого текста
+        selected_option (int): Индекс выбранной опции меню
+        options (list): Список доступных опций меню
+        player_name (str): Текущее имя игрока
+        name_input_active (bool): Флаг активности ввода имени
+    """
+
     def __init__(self, screen, db_handler, default_player_name="Player"):
+        """
+        Инициализирует меню.
+
+        Args:
+            screen: Поверхность Pygame для отрисовки
+            db_handler: Обработчик базы данных
+            default_player_name (str): Имя игрока по умолчанию
+        """
         self.screen = screen
         self.db_handler = db_handler
         self.font_large = pygame.font.Font(None, 74)
@@ -15,6 +44,7 @@ class Menu:
         self.name_input_active = False
 
     def draw_main_menu(self):
+        """Отрисовывает главное меню."""
         self.screen.fill((0, 0, 0))
 
         # Заголовок
@@ -49,6 +79,7 @@ class Menu:
         pygame.display.flip()
 
     def draw_high_scores(self):
+        """Отрисовывает экран с таблицей рекордов."""
         self.screen.fill((0, 0, 0))
 
         # Заголовок
@@ -78,6 +109,12 @@ class Menu:
         pygame.display.flip()
 
     def handle_name_input(self, event):
+        """
+        Обрабатывает ввод имени игрока.
+
+        Args:
+            event: Событие клавиатуры Pygame
+        """
         if event.key == pygame.K_RETURN:
             self.name_input_active = False
         elif event.key == pygame.K_BACKSPACE:
@@ -87,6 +124,14 @@ class Menu:
                 self.player_name += event.unicode
 
     def run(self):
+        """
+        Запускает главный цикл меню.
+
+        Returns:
+            tuple: (player_name, game_started) где:
+                player_name (str): Имя игрока
+                game_started (bool): Флаг начала игры
+        """
         running = True
         game_started = False
         show_high_scores = False

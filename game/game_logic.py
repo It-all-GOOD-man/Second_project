@@ -1,3 +1,9 @@
+"""
+Модуль основной игровой логики.
+
+Содержит главный игровой цикл, обработку событий и отрисовку игры.
+"""
+
 import pygame
 import time
 from .snake import Snake
@@ -5,7 +11,30 @@ from .food import Food
 
 
 class GameLogic:
+    """
+    Класс основной игровой логики.
+
+    Управляет игровым процессом, обработкой событий, обновлением состояния
+    и отрисовкой игры.
+
+    Attributes:
+        settings (dict): Настройки игры
+        db_handler: Обработчик базы данных
+        screen_width (int): Ширина экрана
+        screen_height (int): Высота экрана
+        grid_size (int): Размер клетки сетки
+        snake (Snake): Объект змейки
+        food (Food): Объект еды
+    """
+
     def __init__(self, settings, db_handler):
+        """
+        Инициализирует игровую логику.
+
+        Args:
+            settings (dict): Словарь с настройками игры
+            db_handler: Объект для работы с базой данных
+        """
         self.settings = settings
         self.db_handler = db_handler
         self.screen_width = settings['width']
@@ -26,6 +55,12 @@ class GameLogic:
         self.max_length = 3
 
     def handle_events(self):
+        """
+        Обрабатывает события Pygame.
+
+        Returns:
+            bool: False если игра должна завершиться, иначе True
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
@@ -43,6 +78,12 @@ class GameLogic:
         return True
 
     def update(self):
+        """
+        Обновляет игровое состояние.
+
+        Returns:
+            bool: False если игра окончена, иначе True
+        """
         # Движение змейки
         if not self.snake.move(self.settings['wall_pass'], self.screen_width, self.screen_height):
             return False  # Game over
@@ -68,6 +109,9 @@ class GameLogic:
         return True
 
     def draw(self):
+        """
+        Отрисовывает игровое поле, змейку, еду и интерфейс.
+        """
         self.screen.fill((0, 0, 0))
 
         # Рисуем сетку (опционально)
@@ -96,6 +140,15 @@ class GameLogic:
         pygame.display.flip()
 
     def show_game_over(self, player_name):
+        """
+        Показывает экран завершения игры и сохраняет результаты.
+
+        Args:
+            player_name (str): Имя игрока
+
+        Returns:
+            bool: True если игра должна продолжиться, False для выхода
+        """
         game_duration = int(time.time() - self.start_time)
 
         # Сохраняем результаты в базу данных
@@ -155,6 +208,15 @@ class GameLogic:
             self.clock.tick(30)
 
     def run(self, player_name):
+        """
+        Запускает главный игровой цикл.
+
+        Args:
+            player_name (str): Имя игрока
+
+        Returns:
+            bool: True если игра должна продолжиться с новым раундом, False для выхода в меню
+        """
         running = True
         game_active = True
 
