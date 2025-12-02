@@ -35,9 +35,16 @@ class Menu:
         """
         self.screen = screen
         self.db_handler = db_handler
-        self.font_large = pygame.font.Font(None, 74)
-        self.font_medium = pygame.font.Font(None, 48)
-        self.font_small = pygame.font.Font(None, 36)
+
+        # Получаем размеры экрана
+        self.screen_width = screen.get_width()
+        self.screen_height = screen.get_height()
+
+        # Используем адаптивные размеры шрифтов
+        self.font_large = pygame.font.Font(None, int(self.screen_height * 0.1))    # 10% высоты
+        self.font_medium = pygame.font.Font(None, int(self.screen_height * 0.06))  # 6% высоты
+        self.font_small = pygame.font.Font(None, int(self.screen_height * 0.04))   # 4% высоты
+
         self.selected_option = 0
         self.options = ["Start Game", "High Scores", "Exit"]
         self.player_name = default_player_name  # Используем имя из аргументов
@@ -47,33 +54,39 @@ class Menu:
         """Отрисовывает главное меню."""
         self.screen.fill((0, 0, 0))
 
-        # Заголовок
+        # Центр экрана
+        center_x = self.screen_width // 2
+
+        # Заголовок (10% от верха экрана)
         title = self.font_large.render("SNAKE GAME", True, (0, 255, 0))
-        title_rect = title.get_rect(center=(400, 100))
+        title_rect = title.get_rect(center=(center_x, self.screen_height * 0.15))
         self.screen.blit(title, title_rect)
 
-        # Имя игрока
+        # Имя игрока (25% от верха экрана)
         name_color = (255, 255, 0) if self.name_input_active else (255, 255, 255)
         name_text = self.font_small.render(f"Player: {self.player_name}", True, name_color)
-        name_rect = name_text.get_rect(center=(400, 180))
+        name_rect = name_text.get_rect(center=(center_x, self.screen_height * 0.25))
         self.screen.blit(name_text, name_rect)
 
         if self.name_input_active:
             hint_text = self.font_small.render("Type your name and press ENTER", True, (128, 128, 255))
-            hint_rect = hint_text.get_rect(center=(400, 220))
+            hint_rect = hint_text.get_rect(center=(center_x, self.screen_height * 0.30))
             self.screen.blit(hint_text, hint_rect)
 
-        # Опции меню
+        # Опции меню (начинаем с 40% от верха экрана)
+        option_start_y = self.screen_height * 0.40
+        option_spacing = self.screen_height * 0.10  # 10% высоты между опциями
+
         for i, option in enumerate(self.options):
             color = (0, 255, 0) if i == self.selected_option else (255, 255, 255)
             text = self.font_medium.render(option, True, color)
-            text_rect = text.get_rect(center=(400, 280 + i * 60))
+            text_rect = text.get_rect(center=(center_x, option_start_y + i * option_spacing))
             self.screen.blit(text, text_rect)
 
-        # Управление
+        # Управление (85% от верха экрана)
         controls_text = "Use ARROW KEYS to navigate, ENTER to select, N to change name"
         controls = self.font_small.render(controls_text, True, (128, 128, 128))
-        controls_rect = controls.get_rect(center=(400, 500))
+        controls_rect = controls.get_rect(center=(center_x, self.screen_height * 0.85))
         self.screen.blit(controls, controls_rect)
 
         pygame.display.flip()
@@ -82,9 +95,12 @@ class Menu:
         """Отрисовывает экран с таблицей рекордов."""
         self.screen.fill((0, 0, 0))
 
+        # Центр экрана
+        center_x = self.screen_width // 2
+
         # Заголовок
         title = self.font_large.render("HIGH SCORES", True, (255, 215, 0))
-        title_rect = title.get_rect(center=(400, 80))
+        title_rect = title.get_rect(center=(center_x, self.screen_height * 0.10))
         self.screen.blit(title, title_rect)
 
         # Получаем рекорды из базы данных
@@ -92,18 +108,21 @@ class Menu:
 
         if not high_scores:
             no_scores = self.font_medium.render("No games played yet!", True, (255, 255, 255))
-            no_scores_rect = no_scores.get_rect(center=(400, 200))
+            no_scores_rect = no_scores.get_rect(center=(center_x, self.screen_height * 0.30))
             self.screen.blit(no_scores, no_scores_rect)
         else:
+            start_y = self.screen_height * 0.20
+            row_spacing = self.screen_height * 0.06
+
             for i, (player, score, duration, date) in enumerate(high_scores):
                 score_text = f"{i + 1}. {player}: {score} pts - {duration}s"
                 text = self.font_small.render(score_text, True, (255, 255, 255))
-                text_rect = text.get_rect(center=(400, 150 + i * 40))
+                text_rect = text.get_rect(center=(center_x, start_y + i * row_spacing))
                 self.screen.blit(text, text_rect)
 
-        # Кнопка возврата
+        # Кнопка возврата (90% от верха экрана)
         back_text = self.font_medium.render("Press ESC to return", True, (128, 128, 128))
-        back_rect = back_text.get_rect(center=(400, 550))
+        back_rect = back_text.get_rect(center=(center_x, self.screen_height * 0.90))
         self.screen.blit(back_text, back_rect)
 
         pygame.display.flip()
